@@ -1,1 +1,31 @@
-<p>login works!</p>
+<body class="hold-transition login-page">
+    <div class="login-box">
+      <div class="card card-outline card-primary">
+        <div class="card-header text-center">
+          <a class="h1"><b>MCA </b>ERP</a>
+        </div>
+        <div class="card-body">
+          <p class="login-box-msg">Panele ulaşmak için giriş yapınız.</p>
+    
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" [(ngModel)]="loginModel.emailOrUserName" placeholder="Email">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" [(ngModel)]="loginModel.password" placeholder="Password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block" (click)="signIn()">Sign In</button>
+
+        </div>
+      </div>
+    </div>
+</body>

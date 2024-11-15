@@ -17,7 +17,7 @@ public class ExceptionHandler : IExceptionHandler
         {
             httpContext.Response.StatusCode = 403;
 
-            errorResult = Result<string>.Failure(403, ((FluentValidation.ValidationException)exception).Errors.Select(s => s.PropertyName).ToList());
+            errorResult = Result<string>.Failure(403, ((FluentValidation.ValidationException)exception).Errors.Select(s => s.ErrorMessage).ToList());
 
             await httpContext.Response.WriteAsync(JsonSerializer.Serialize(errorResult));
 

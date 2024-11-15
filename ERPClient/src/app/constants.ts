@@ -1,1 +1,1 @@
-export const api:string="localhost/5000";
+export const api:string="https://localhost:7032/api";
