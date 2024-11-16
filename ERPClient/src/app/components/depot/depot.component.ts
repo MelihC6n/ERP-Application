@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { SharedModule } from '../../modules/shared.module';
 import { DepotModel } from '../../models/depot.model';
 import { DepotPipe } from '../../pipes/depot.pipe';
@@ -20,6 +20,8 @@ depots:DepotModel[]=[];
 createModel:DepotModel=new DepotModel();
 updateModel:DepotModel=new DepotModel();
 
+@ViewChild("#createModelCloseBtn") createModelCloseBtn : ElementRef<HTMLButtonElement> | undefined;
+
 constructor(
   private http:HttpService,
   private swal:SwalService
@@ -27,7 +29,10 @@ constructor(
 
 create(form:NgForm){
   if(form.valid){
-    
+    this.http.post<string>("Depot/Create",this.createModel,res=>{
+      this.swal.callToast(res);
+      this.createModelCloseBtn?.nativeElement.click();
+    })
   }
 }
 }
