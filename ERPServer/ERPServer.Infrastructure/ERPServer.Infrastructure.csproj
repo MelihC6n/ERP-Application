@@ -14,7 +14,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Scrutor" Version="5.0.2" />
-    <PackageReference Include="TS.EntityFrameworkCore.GenericRepository" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup>
