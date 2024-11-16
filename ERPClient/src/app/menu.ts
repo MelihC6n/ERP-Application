@@ -23,6 +23,11 @@ export const Menus:MenuModel[]=[
             icon:"far fa-solid fa-users",
             url:"/customers",
             isTitle:false
+        },{
+            name:"Depolar",
+            icon:"fa-solid fa-warehouse",
+            url:"/depots",
+            isTitle:false
         }]
     }
 ];

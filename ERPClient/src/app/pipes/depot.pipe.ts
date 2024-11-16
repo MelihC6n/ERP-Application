@@ -1,24 +1,21 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { CustomerModel } from '../models/customer.model';
+import { DepotModel } from '../models/depot.model';
 
 @Pipe({
-  name: 'customer',
+  name: 'depot',
   standalone: true
 })
-export class CustomerPipe implements PipeTransform {
+export class DepotPipe implements PipeTransform {
 
-  transform(value: CustomerModel[], search:string): CustomerModel[] {
+  transform(value: DepotModel[], search:string): DepotModel[] {
     if(search===""){
       return value;
     }
     
     return value.filter(p=>p.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
       || p.city.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-      || p.taxDepartment.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-      || p.taxNumber.toString().includes(search)
       || p.fullAddress.toLocaleLowerCase().includes(search.toLocaleLowerCase())
       || p.town.toLocaleLowerCase().includes(search.toLocaleLowerCase())
     );
   }
-
 }
