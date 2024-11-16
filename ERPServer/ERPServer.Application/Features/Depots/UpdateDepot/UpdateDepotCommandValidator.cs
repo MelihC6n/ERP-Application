@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace ERPServer.Application.Features.Depots.CreateDepot;
+namespace ERPServer.Application.Features.Depots.UpdateDepot;
 
-public sealed class CreateDepotValidator : AbstractValidator<CreateDepotCommand>
+public sealed class UpdateDepotCommandValidator : AbstractValidator<UpdateDepotCommand>
 {
-    public CreateDepotValidator()
+    public UpdateDepotCommandValidator()
     {
         RuleFor(x => x.Name)
             .NotEmpty().WithMessage("Ad alanı boş bırakılamaz.")
