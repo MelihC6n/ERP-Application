@@ -1,4 +1,5 @@
 ﻿using ERPServer.Application.Features.Products.CreateProduct;
+using ERPServer.Application.Features.Products.DeleteProduct;
 using ERPServer.Application.Features.Products.GetAllProducts;
 using ERPServer.Application.Features.Products.UpdateProduct;
 using ERPServer.WebAPI.Abstractions;
@@ -27,12 +28,12 @@ public class ProductController : ApiController
         return StatusCode(response.StatusCode, response);
     }
 
-    //[HttpPost]
-    //public async Task<IActionResult> Delete(DeleteDepotCommand request, CancellationToken cancellationToken)
-    //{
-    //    var response = await _mediator.Send(request);
-    //    return StatusCode(response.StatusCode, response);
-    //}
+    [HttpPost]
+    public async Task<IActionResult> Delete(DeleteProductCommand request, CancellationToken cancellationToken)
+    {
+        var response = await _mediator.Send(request);
+        return StatusCode(response.StatusCode, response);
+    }
 
     [HttpPost]
     public async Task<IActionResult> Update(UpdateProductCommand request, CancellationToken cancellationToken)
