@@ -100,7 +100,12 @@
                     <label>Ürün Tipi</label>
                     <select class="form-control" [(ngModel)]="updateModel.typeValue" required name="updateType">
                         @for (item of productTypes; track $index) {
-                            <option value="{{item.value}}">{{item.name}}</option>
+                            @if(item.value == updateModel.type.value){
+                                <option selected value="{{item.value}}">{{item.name}}</option>
+                            }
+                            @else {
+                                <option value="{{item.value}}">{{item.name}}</option>
+                            }
                         }
                     </select>
                     <div class="invalid-feedback"></div>

@@ -6,8 +6,6 @@ import { HttpService } from '../../services/http.service';
 import { NgForm } from '@angular/forms';
 import { ProductModel } from '../../models/product.model';
 import { productTypeEnum } from '../../models/product.type.model';
-import { CreateProductModel } from '../../models/create.product.model';
-
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -20,8 +18,8 @@ export class ProductsComponent {
   search:string="";
   products:ProductModel[]=[];
   
-  createModel:CreateProductModel=new CreateProductModel();
-  updateModel:CreateProductModel=new CreateProductModel();
+  createModel:ProductModel=new ProductModel();
+  updateModel:ProductModel=new ProductModel();
   
   @ViewChild("createModelCloseBtn") createModelCloseBtn : ElementRef<HTMLButtonElement> | undefined;
   @ViewChild("updateModelCloseBtn") updateModelCloseBtn : ElementRef<HTMLButtonElement> | undefined;
@@ -49,15 +47,14 @@ export class ProductsComponent {
       this.http.post<string>("Product/Create",this.createModel,res=>{
         this.swal.callToast(res);
         this.createModelCloseBtn?.nativeElement.click();
-        this.createModel=new CreateProductModel();
+        this.createModel=new ProductModel();
         this.getAll();
       })
     }
   }
   
   get(product:ProductModel){
-    this.updateModel.id=product.id
-    this.updateModel.name=product.name
+    this.updateModel=product
     this.updateModel.typeValue=product.type.value;
   }
   
@@ -74,7 +71,7 @@ export class ProductsComponent {
   }
   
   delete(product:ProductModel){
-    this.swal.callSwal("Silme Onayı!",`${product.name} isimli depoyi silmek istiyor musunuz?`,()=>{
+    this.swal.callSwal("Silme Onayı!",`${product.name} isimli ürünü silmek istiyor musunuz?`,()=>{
       this.http.post<string>("Product/Delete",{id:product.id},res=>{
         this.swal.callToast(res);
         this.getAll();
