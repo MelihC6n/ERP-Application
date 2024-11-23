@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace ERPServer.Application.Features.Products.CreateProduct;
+namespace ERPServer.Application.Features.Products.UpdateProduct;
 
-public sealed class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
+public sealed class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommand>
 {
-    public CreateProductCommandValidator()
+    public UpdateProductCommandValidator()
     {
         RuleFor(command => command.Name)
             .NotEmpty()
