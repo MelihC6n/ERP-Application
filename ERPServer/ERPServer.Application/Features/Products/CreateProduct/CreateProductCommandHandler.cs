@@ -1,7 +1,5 @@
-﻿using Ardalis.SmartEnum;
-using AutoMapper;
+﻿using AutoMapper;
 using ERPServer.Domain.Entities;
-using ERPServer.Domain.Enums;
 using ERPServer.Domain.Repositories;
 using GenericRepository;
 using MediatR;
@@ -16,12 +14,6 @@ internal sealed class CreateProductCommandHandler(
 {
     public async Task<Result<string>> Handle(CreateProductCommand request, CancellationToken cancellationToken)
     {
-        ProductTypeEnum productType = SmartEnum<ProductTypeEnum>.FromValue(request.TypeValue);
-        if (productType is null)
-        {
-            return Result<string>.Failure("Lütfen ürün tipi seçiniz!");
-        }
-
         bool isProductExist = await productRepository.AnyAsync(x => x.Name == request.Name, cancellationToken);
         if (isProductExist)
         {

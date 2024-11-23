@@ -28,6 +28,11 @@ export const Menus:MenuModel[]=[
             icon:"fa-solid fa-warehouse",
             url:"/depots",
             isTitle:false
+        },{
+            name:"Ürünler",
+            icon:"fa-solid fa-cubes-stacked",
+            url:"/products",
+            isTitle:false
         }]
     }
 ];
